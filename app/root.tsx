@@ -8,6 +8,10 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import { checkEnv } from "./env.server";
+import { serverOnly$ } from "vite-env-only/macros";
+
+serverOnly$(checkEnv());
 
 export const links: LinksFunction = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
