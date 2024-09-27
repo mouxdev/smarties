@@ -3,6 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import Carousel from "~/components/Carousel";
 import DepartureMonitor from "~/components/Pages/DepartureMonitor";
 import MensattFrame from "~/components/Pages/MensattFrame";
+import XKCDImg from "~/components/Pages/XKCDImg";
 
 export const meta: MetaFunction = () => {
     return [
@@ -18,6 +19,7 @@ export default function Index() {
     const { vgnStationId, vgnTitle } = useLoaderData<typeof loader>();
     return (
         <Carousel>
+            <XKCDImg />
             <MensattFrame />
             <DepartureMonitor stationId={vgnStationId} title={vgnTitle} />
         </Carousel>

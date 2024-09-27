@@ -7,9 +7,10 @@ export default async function fetchXKCD() {
 
     if (!process.env.tempDir) {
         console.log("Temp dir doesn't exist, aborting");
+        return;
     }
 
-    const screenshotPath = path.join(process.env.tempDir!, "screenshots");
+    const screenshotPath = path.join(process.env.tempDir, "screenshots");
     ensureDirExists(screenshotPath);
     
     const browser = await puppeteer.launch({ defaultViewport: { width: 5000, height: 4000, deviceScaleFactor: 0 } });
