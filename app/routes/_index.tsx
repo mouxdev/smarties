@@ -1,5 +1,8 @@
 import { json, type LoaderFunction, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import Carousel from "~/components/Carousel";
+import DepartureMonitor from "~/components/Pages/DepartureMonitor";
+import MensattFrame from "~/components/Pages/MensattFrame";
 
 export const meta: MetaFunction = () => {
     return [
@@ -8,15 +11,15 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async () => {
-    return json({ value: process.env.value });
+    return json({ vgnStationId: process.env.vgnStationId, vgnTitle: process.env.vgnTitle });
 };
 
 export default function Index() {
-    const { value } = useLoaderData<typeof loader>();
+    const { vgnStationId, vgnTitle } = useLoaderData<typeof loader>();
     return (
-        <p>
-            hi
-            {value}
-        </p>
+        <Carousel>
+            <MensattFrame />
+            <DepartureMonitor stationId={vgnStationId} title={vgnTitle} />
+        </Carousel>
     );
 }
